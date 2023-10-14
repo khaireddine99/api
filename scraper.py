@@ -1,7 +1,6 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
-
-
+import json
 
 def scrape():
     raw = urlopen("https://www.tunisianet.com.tn/301-pc-portable-tunisie")
@@ -23,12 +22,14 @@ def scrape():
         article_dict = {"name": article_name, "price": article_price}
         article_list.append(article_dict)
 
+    # Open a file in write mode and save the data as JSON
+    with open("data.json", "w") as file:
+        json.dump(article_list, file, indent=4)
+
     return article_list
 
 if __name__ == '__main__':
     scrape()
-
-
 
     
     

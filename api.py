@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+import json
 from scraper import scrape
 
 app = Flask(__name__)
@@ -8,7 +9,6 @@ app = Flask(__name__)
 def scrape_data():
     try:
         scraped_data = scrape()  # Call the scrape function to get the data
-
         return jsonify(scraped_data)
 
     except Exception as e:
